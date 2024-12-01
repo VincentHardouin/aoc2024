@@ -1,0 +1,17 @@
+{
+  "name": "aoc2024",
+  "type": "module",
+  "module": "index.ts",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.11.2",
+    "@types/bun": "latest",
+    "eslint": "^9.16.0",
+    "eslint-plugin-format": "^0.1.3"
+  }
+}
