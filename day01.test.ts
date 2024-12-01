@@ -1,9 +1,9 @@
-import { describe, expect, test } from 'bun:test';
+import { describe, expect, it } from 'vitest';
 import { DayImpl } from './day01.ts';
 
 describe('day01', () => {
   describe('partOne', () => {
-    test('should return 11', () => {
+    it('should return 11', () => {
       const sample = `
 3   4
 4   3
@@ -17,7 +17,7 @@ describe('day01', () => {
   });
 
   describe('partTwo', () => {
-    test('should return 31', () => {
+    it('should return 31', () => {
       const sample = `
 3   4
 4   3

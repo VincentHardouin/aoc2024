@@ -5,17 +5,17 @@ My [advent of code 2024](https://adventofcode.com/) resolution
 To install dependencies:
 
 ```bash
-bun install
+npm ci
 ```
 
 To run:
 
 ```bash
-bun run index.ts <day>
+npm start <day>
 ```
 
 To run tests:
 
 ```bash
-bun test
+npm run test
 ```
