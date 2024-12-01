@@ -1,0 +1,26 @@
+import type { Day } from './Day.ts';
+
+export class DayImpl implements Day {
+  private readonly input: Array<Array<number>>;
+
+  constructor(input: string) {
+    this.input = this.parseInput(input);
+  }
+
+  parseInput(input: string) {
+    return input
+      .trim()
+      .split('\n')
+      .map((line: string) => {
+        return line
+          .split(/\s+/)
+          .map(e => Number.parseInt(e, 10));
+      });
+  }
+
+  partOne() {
+  }
+
+  partTwo() {
+  }
+}

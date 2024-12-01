@@ -19,3 +19,9 @@ To run tests:
 ```bash
 npm run test
 ```
+
+To generate day: 
+
+```bash
+npm run day
+```
