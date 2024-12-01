@@ -5,7 +5,8 @@
   "scripts": {
     "start": "tsx index.ts",
     "lint": "eslint .",
-    "test": "vitest"
+    "test": "vitest",
+    "day": "plop day"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
@@ -15,6 +16,7 @@
     "@types/bun": "latest",
     "eslint": "^9.16.0",
     "eslint-plugin-format": "^0.1.3",
+    "plop": "^4.0.1",
     "tsx": "^4.19.2",
     "vitest": "^2.1.6"
   }
