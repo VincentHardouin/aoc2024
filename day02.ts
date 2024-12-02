@@ -19,45 +19,42 @@ export class DayImpl implements Day {
   }
 
   partOne() {
-    return this.input.reduce((acc, value) => {
-      return this.checkReport(value) ? acc + 1 : acc;
-    }, 0);
-  }
-
-  checkReport(line: Array<number>) {
-    let order = 0;
-    for (let i = 0; i < line.length - 1; i++) {
-      const diff = line[i] - line[i + 1];
-      if (i === 0) {
-        order = diff;
-      }
-      if (order === 0) {
-        return false;
-      }
-      if (order > 0 && (diff > 3 || diff < 1)) {
-        return false;
-      }
-      if (order < 0 && (diff < -3 || diff > -1)) {
-        return false;
-      }
-    }
-    return true;
+    return this.input.map(checkReport).filter(Boolean).length;
   }
 
   partTwo() {
-    return this.input.reduce((acc, value) => {
-      if (this.checkReport(value)) {
-        return acc + 1;
-      }
-
-      for (let i = 0; i < value.length; i++) {
-        const clone = [...value];
-        delete clone[i];
-        if (this.checkReport(clone.filter(Number))) {
-          return acc + 1;
-        }
-      }
-      return acc;
-    }, 0);
+    return this.input.map(checkReportWithDampener).filter(Boolean).length;
   }
+}
+
+function checkReport(line: number[]) {
+  const order = line[0] - line[1];
+  for (let i = 0; i < line.length - 1; i++) {
+    const diff = line[i] - line[i + 1];
+    if (order === 0) {
+      return false;
+    }
+    if (order > 0 && (diff > 3 || diff < 1)) {
+      return false;
+    }
+    if (order < 0 && (diff < -3 || diff > -1)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function checkReportWithDampener(line: number[]) {
+  if (checkReport(line)) {
+    return true;
+  }
+
+  for (let i = 0; i < line.length; i++) {
+    const clone = [...line];
+    delete clone[i];
+    if (checkReport(clone.filter(Number))) {
+      return true;
+    }
+  }
+  return false;
 }
