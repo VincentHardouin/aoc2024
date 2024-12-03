@@ -1,5 +1,5 @@
 export interface Day {
-  parseInput: (input: string) => Array<any>;
+  parseInput: (input: string) => any;
   partOne: () => number;
   partTwo: () => number;
 }
