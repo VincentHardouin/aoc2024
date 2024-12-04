@@ -1,5 +1,5 @@
 import type { Day } from './Day.ts';
-import { diagNeighbors, enumGrid, neighbors } from './utils.ts';
+import { diagNeighbors, enumGrid, isInGrid, neighbors } from './utils.ts';
 
 export class DayImpl implements Day {
   private readonly input: Array<string[]>;
@@ -30,8 +30,7 @@ export class DayImpl implements Day {
         for (let k = 1; k < 4; k++) {
           const y2 = j + y * k;
           const x2 = i + x * k;
-          if (y2 >= 0 && y2 < this.input.length
-            && x2 >= 0 && x2 < this.input[0].length) {
+          if (isInGrid(this.input, y2, x2)) {
             word.push(this.input[y2][x2]);
           }
         }
@@ -45,6 +44,12 @@ export class DayImpl implements Day {
   }
 
   partTwo() {
+    const valid = [
+      'MMSS',
+      'SSMM',
+      'MSSM',
+      'SMMS',
+    ];
     let count = 0;
 
     for (const { x: i, y: j, cell } of enumGrid(this.input)) {
@@ -55,17 +60,10 @@ export class DayImpl implements Day {
       for (const [y, x] of diagNeighbors) {
         const x2 = i + x;
         const y2 = j + y;
-        if (y2 >= 0 && y2 < this.input.length
-          && x2 >= 0 && x2 < this.input[0].length) {
+        if (isInGrid(this.input, y2, x2)) {
           adj.push(this.input[y2][x2]);
         }
       }
-      const valid = [
-        'MMSS',
-        'SSMM',
-        'MSSM',
-        'SMMS',
-      ];
       if (valid.includes(adj.join(''))) {
         count++;
       }

@@ -1,5 +1,5 @@
-function splitPairs(arr: any) {
-  return arr.reduce(([leftAcc, rightAcc], [key, value]) => {
+function splitPairs<T, K>(arr: [T, K][]): [T[], K[]] {
+  return arr.reduce<[T[], K[]]>(([leftAcc, rightAcc], [key, value]) => {
     return [
       [...leftAcc, key],
       [...rightAcc, value],
@@ -7,8 +7,8 @@ function splitPairs(arr: any) {
   }, [[], []]);
 }
 
-function transpose(arr: any) {
-  return arr[0].map((col: any, i: number) => arr.map((row: any) => row[i]));
+function transpose<T>(arr: T[][]): T[][] {
+  return arr[0].map((_, i) => arr.map(row => row[i]));
 }
 
 const directNeighbors: number[][] = [
@@ -32,7 +32,7 @@ function* enumerate(enumerable: Iterable<any>) {
   for (const item of enumerable) yield [i++, item];
 }
 
-function* enumGrid(grid: any[][]) {
+function* enumGrid<T>(grid: T[][]) {
   for (const [y, row] of enumerate(grid)) {
     for (const [x, cell] of enumerate(row)) {
       yield { x, y, row, cell };
@@ -40,11 +40,17 @@ function* enumGrid(grid: any[][]) {
   }
 }
 
+function isInGrid<T>(grid: T[][], y: number, x: number) {
+  return y >= 0 && y < grid.length
+    && x >= 0 && x < grid[0].length;
+}
+
 export {
   diagNeighbors,
   directNeighbors,
   enumerate,
   enumGrid,
+  isInGrid,
   neighbors,
   splitPairs,
   transpose,
