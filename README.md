@@ -1,6 +1,6 @@
 # aoc2024
 
-My [advent of code 2024](https://adventofcode.com/) resolution 
+My [advent of code 2024](https://adventofcode.com/) resolution
 
 To install dependencies:
 
@@ -20,7 +20,7 @@ To run tests:
 npm run test
 ```
 
-To generate day: 
+To generate day:
 
 ```bash
 npm run day
