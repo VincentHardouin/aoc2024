@@ -1,7 +1,6 @@
 import type { Day } from './Day.ts';
+import type { Pos } from './utils.ts';
 import { directNeighbors } from './utils.ts';
-
-type Pos = [y: number, x: number];
 
 export class DayImpl implements Day {
   private readonly input: number[][];

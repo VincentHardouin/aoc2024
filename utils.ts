@@ -1,3 +1,5 @@
+export type Pos = [y: number, x: number];
+
 function splitPairs<T, K>(arr: [T, K][]): [T[], K[]] {
   return arr.reduce<[T[], K[]]>(([leftAcc, rightAcc], [key, value]) => {
     return [
@@ -11,21 +13,21 @@ function transpose<T>(arr: T[][]): T[][] {
   return arr[0].map((_, i) => arr.map(row => row[i]));
 }
 
-const directNeighbors: number[][] = [
+const directNeighbors: Pos[] = [
   [0, 1],
   [0, -1],
   [1, 0],
   [-1, 0],
 ];
 
-const diagNeighbors: number[][] = [
+const diagNeighbors: Pos[] = [
   [1, 1],
   [1, -1],
   [-1, -1],
   [-1, 1],
 ];
 
-const neighbors: number[][] = [...diagNeighbors, ...directNeighbors];
+const neighbors: Pos[] = [...diagNeighbors, ...directNeighbors];
 
 function* enumerate(enumerable: Iterable<any>) {
   let i = 0;
