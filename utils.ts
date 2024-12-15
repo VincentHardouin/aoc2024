@@ -47,13 +47,34 @@ function isInGrid<T>(grid: T[][], y: number, x: number) {
     && x >= 0 && x < grid[0].length;
 }
 
+function getPositionOfUniqElement(grid: string[][], element: string): Pos {
+  const y = grid.findIndex(x => x.includes(element));
+  const x = grid[y].indexOf(element);
+  return [y, x] as Pos;
+}
+
+function printGrid(grid: string[][]) {
+  grid.forEach((line) => {
+    let str = '';
+    line.forEach((pos) => {
+      str += pos;
+    });
+    // eslint-disable-next-line no-console
+    console.log(str);
+  });
+  // eslint-disable-next-line no-console
+  console.log('');
+}
+
 export {
   diagNeighbors,
   directNeighbors,
   enumerate,
   enumGrid,
+  getPositionOfUniqElement,
   isInGrid,
   neighbors,
+  printGrid,
   splitPairs,
   transpose,
 };
