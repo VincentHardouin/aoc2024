@@ -66,6 +66,60 @@ function printGrid(grid: string[][]) {
   console.log('');
 }
 
+interface MinHeapNode {
+  score: number;
+  node: string;
+}
+
+class MinHeap {
+  heap: MinHeapNode[];
+  constructor() {
+    this.heap = [];
+  }
+
+  insert(element: MinHeapNode) {
+    this.heap.push(element);
+    let index = this.heap.length - 1;
+
+    while (index > 0) {
+      const parentIndex = Math.floor((index - 1) / 2);
+      if (this.heap[index].score >= this.heap[parentIndex].score)
+        break;
+      [this.heap[index], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[index]];
+      index = parentIndex;
+    }
+  }
+
+  extractMin() {
+    if (this.heap.length === 1)
+      return this.heap.pop() as MinHeapNode;
+    const min = this.heap[0];
+    this.heap[0] = this.heap.pop() as MinHeapNode;
+    let index = 0;
+
+    while (true) {
+      const leftChild = 2 * index + 1;
+      const rightChild = 2 * index + 2;
+      let smallest = index;
+
+      if (leftChild < this.heap.length && this.heap[leftChild].score < this.heap[smallest].score)
+        smallest = leftChild;
+      if (rightChild < this.heap.length && this.heap[rightChild].score < this.heap[smallest].score)
+        smallest = rightChild;
+      if (smallest === index)
+        break;
+      [this.heap[index], this.heap[smallest]] = [this.heap[smallest], this.heap[index]];
+      index = smallest;
+    }
+
+    return min;
+  }
+
+  size() {
+    return this.heap.length;
+  }
+}
+
 export {
   diagNeighbors,
   directNeighbors,
@@ -73,6 +127,7 @@ export {
   enumGrid,
   getPositionOfUniqElement,
   isInGrid,
+  MinHeap,
   neighbors,
   printGrid,
   splitPairs,
