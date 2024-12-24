@@ -14,11 +14,4 @@ export default antfu(
       markdown: 'prettier',
     },
   },
-  {
-    languageOptions: {
-      globals: {
-        Bun: true,
-      },
-    },
-  },
 );
