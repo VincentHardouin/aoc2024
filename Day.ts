@@ -1,5 +1,5 @@
 export interface Day {
   parseInput: (input: string) => any;
-  partOne: () => number;
-  partTwo: () => number;
+  partOne: () => number | bigint | string;
+  partTwo: () => number | bigint | string;
 }
