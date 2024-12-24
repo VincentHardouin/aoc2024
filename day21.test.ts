@@ -14,12 +14,4 @@ describe('day21', () => {
       expect(new DayImpl(sample).partOne()).toEqual(126384);
     });
   });
-
-  describe('partTwo', () => {
-    it('should return', () => {
-      const sample = ``;
-
-      expect(new DayImpl(sample).partTwo()).toEqual();
-    });
-  });
 });
